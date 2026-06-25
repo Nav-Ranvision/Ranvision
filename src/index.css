@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans text-gray-900 antialiased;
+  }
+}
+
+@layer components {
+  .hero-bg {
+    background: linear-gradient(135deg, #0D1B2E 0%, #122035 60%, #1A2E48 100%);
+  }
+  .dot-pattern {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .btn-primary {
+    @apply bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200 inline-flex items-center gap-2;
+  }
+  .btn-outline {
+    @apply border border-white/30 hover:border-white/60 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200 inline-flex items-center gap-2;
+  }
+  .card {
+    @apply bg-white border border-gray-100 rounded-xl p-6 shadow-sm;
+  }
+  .section-label {
+    @apply text-brand-orange text-xs font-semibold uppercase tracking-widest;
+  }
+}
