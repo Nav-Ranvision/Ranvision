@@ -4,28 +4,68 @@
 
 @layer base {
   body {
-    @apply font-sans text-gray-900 antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #111827;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
 @layer components {
   .hero-bg {
-    background: linear-gradient(135deg, #0D1B2E 0%, #122035 60%, #1A2E48 100%);
+    background-color: #0D1B2E;
+    background-image: linear-gradient(135deg, #0D1B2E 0%, #122035 60%, #1A2E48 100%);
   }
   .dot-pattern {
-    background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
     background-size: 28px 28px;
   }
   .btn-primary {
-    @apply bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200 inline-flex items-center gap-2;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #F5A623;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover {
+    background-color: #D4891A;
   }
   .btn-outline {
-    @apply border border-white/30 hover:border-white/60 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200 inline-flex items-center gap-2;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: border-color 0.2s;
+    text-decoration: none;
+    cursor: pointer;
+    background: transparent;
+  }
+  .btn-outline:hover {
+    border-color: rgba(255,255,255,0.7);
   }
   .card {
-    @apply bg-white border border-gray-100 rounded-xl p-6 shadow-sm;
+    background: #ffffff;
+    border: 1px solid #f3f4f6;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07);
   }
   .section-label {
-    @apply text-brand-orange text-xs font-semibold uppercase tracking-widest;
+    color: #F5A623;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
   }
 }
