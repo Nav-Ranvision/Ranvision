@@ -66,7 +66,7 @@ export default function Home() {
           </div>
           <div className="hidden md:flex items-center justify-center">
             <img
-              src="https://preview--ranvision-growth-hub.lovable.app/assets/dispatch-center-CX4PdnRr.jpg"
+              src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=800&q=80"
               alt="Dispatch operations center"
               className="w-full h-72 object-cover rounded-2xl"
               style={{border: '1px solid rgba(255,255,255,0.1)'}}
