@@ -22,7 +22,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Quick links */}
+          {/* Quick Links */}
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">Quick Links</p>
             <ul className="space-y-2">
@@ -63,13 +63,23 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Bottom bar */}
         <div className="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-xs">© 2026 Ranvision. All rights reserved.</p>
+          <div className="flex flex-col gap-1 text-center sm:text-left">
+            <p className="text-gray-500 text-xs">© 2026 Ranvision LLC. All rights reserved.</p>
+            <p className="text-gray-500 text-xs">
+              By using this site, you agree to our{' '}
+              <Link to="/terms-of-service" className="underline hover:text-gray-300 transition-colors">Terms of Service</Link>
+              {' '}and{' '}
+              <Link to="/privacy-policy" className="underline hover:text-gray-300 transition-colors">Privacy Policy</Link>.
+            </p>
+          </div>
           <div className="flex gap-6">
             <Link to="/privacy-policy" className="text-gray-500 hover:text-gray-300 text-xs transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="text-gray-500 hover:text-gray-300 text-xs transition-colors">Terms of Service</Link>
+            <Link to="/terms-of-service" className="text-gray-500 hover:text-gray-300 text-xs transition-colors">Terms of Service</Link>
           </div>
         </div>
+
       </div>
     </footer>
   )
