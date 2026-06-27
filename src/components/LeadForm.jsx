@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 
 const equipmentOptions = [
@@ -23,6 +24,7 @@ export default function LeadForm() {
     primary_lanes: '',
     equipment_type: '',
   })
+  const [agreedToTerms, setAgreedToTerms] = useState(false)
   const [status, setStatus] = useState('idle') // idle | loading | success | error
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -32,6 +34,11 @@ export default function LeadForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (!agreedToTerms) {
+      setStatus('error')
+      setErrorMsg('You must agree to the Terms of Service and Privacy Policy to continue.')
+      return
+    }
     setStatus('loading')
     setErrorMsg('')
 
@@ -55,6 +62,7 @@ export default function LeadForm() {
       }
 
       setStatus('success')
+      setAgreedToTerms(false)
       setForm({
         full_name: '', company_name: '', phone: '', email: '',
         mc_number: '', truck_count: '', primary_lanes: '', equipment_type: '',
@@ -147,14 +155,36 @@ export default function LeadForm() {
         </select>
       </div>
 
+      {/* Terms & Privacy Checkbox */}
+      <div className="flex items-start gap-3 pt-1">
+        <input
+          type="checkbox"
+          id="agreeTerms"
+          checked={agreedToTerms}
+          onChange={(e) => setAgreedToTerms(e.target.checked)}
+          className="mt-0.5 w-4 h-4 accent-orange-500 flex-shrink-0 cursor-pointer"
+        />
+        <label htmlFor="agreeTerms" className="text-sm text-gray-600 leading-snug cursor-pointer">
+          I have read and agree to Ranvision LLC's{' '}
+          <Link to="/terms-of-service" target="_blank" className="text-brand-orange underline hover:opacity-80">
+            Terms of Service
+          </Link>
+          {' '}and{' '}
+          <Link to="/privacy-policy" target="_blank" className="text-brand-orange underline hover:opacity-80">
+            Privacy Policy
+          </Link>
+          . I understand that submitting this form initiates a binding service relationship with Ranvision LLC.
+        </label>
+      </div>
+
       {status === 'error' && (
         <p className="text-red-600 text-sm bg-red-50 px-4 py-2 rounded-lg">{errorMsg}</p>
       )}
 
       <button
         type="submit"
-        disabled={status === 'loading'}
-        className="btn-primary w-full justify-center py-3 disabled:opacity-60"
+        disabled={status === 'loading' || !agreedToTerms}
+        className="btn-primary w-full justify-center py-3 disabled:opacity-60 disabled:cursor-not-allowed"
       >
         {status === 'loading' ? 'Sending...' : 'Request Dispatch Support →'}
       </button>
